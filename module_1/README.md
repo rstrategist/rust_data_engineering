@@ -1,3 +1,5 @@
+[![Makefile CI](https://github.com/rstrategist/rust_data_engineering/actions/workflows/makefile.yml/badge.svg)](https://github.com/rstrategist/rust_data_engineering/actions/workflows/makefile.yml)
+
 # Getting started with the Rust Development 
 
 Rust development ecosystem, including AI coding tools, continuous integration, and cloud-based environments.
