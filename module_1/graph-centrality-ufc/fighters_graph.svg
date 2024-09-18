@@ -1,0 +1,77 @@
+<svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+<g transform="translate(72, 364)">
+<g>
+<g>
+<rect fill="#DD3355" height="10" width="10" x="-5" y="-175"/>
+<rect fill="#DD3355" height="10" width="10" x="115" y="-5"/>
+<rect fill="#DD3355" height="10" width="10" x="235" y="-5"/>
+<rect fill="#DD3355" height="10" width="10" x="355" y="-345"/>
+<rect fill="#DD3355" height="10" width="10" x="475" y="-175"/>
+</g>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="0" x2="0" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="120" x2="120" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="240" x2="240" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="360" x2="360" y1="0" y2="10"/>
+<line stroke="black" stroke-width="1" x1="480" x2="480" y1="0" y2="10"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="480" y1="0" y2="0"/>
+<g>
+<text font-size="12" text-anchor="middle" x="0" y="20">
+0
+</text>
+<text font-size="12" text-anchor="middle" x="120" y="20">
+1
+</text>
+<text font-size="12" text-anchor="middle" x="240" y="20">
+2
+</text>
+<text font-size="12" text-anchor="middle" x="360" y="20">
+3
+</text>
+<text font-size="12" text-anchor="middle" x="480" y="20">
+4
+</text>
+</g>
+<text font-size="12" text-anchor="middle" x="240" y="30">
+Fighter Index
+</text>
+</g>
+<g>
+<g>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-0" y2="-0"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-67.99999999999999" y2="-67.99999999999999"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-135.99999999999997" y2="-135.99999999999997"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-204.00000000000003" y2="-204.00000000000003"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-272" y2="-272"/>
+<line stroke="black" stroke-width="1" x1="0" x2="-10" y1="-340" y2="-340"/>
+</g>
+<line stroke="black" stroke-width="1" x1="0" x2="0" y1="0" y2="-340"/>
+<g>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-0">
+2
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-67.99999999999999">
+2.4
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-135.99999999999997">
+2.8
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-204.00000000000003">
+3.2
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-272">
+3.6
+</text>
+<text dominant-baseline="middle" font-size="12" text-anchor="end" x="-15" y="-340">
+4
+</text>
+</g>
+<text font-size="12" text-anchor="middle" transform="rotate(-90 -36 -170)" x="-36" y="-182">
+Number of Fights
+</text>
+</g>
+</g>
+</svg>
