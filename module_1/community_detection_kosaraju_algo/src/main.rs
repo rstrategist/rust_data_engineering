@@ -73,10 +73,15 @@ fn analyze_graph(graph: &DiGraph<&str, &str>, description: &str) {
 /// assert_eq!(graph.node_count(), 3);
 /// assert_eq!(graph.edge_count(), 2);
 /// ```
-///
-fn build_graph(usernames: &[&str]) -> DiGraph<&str, &str> {
+
+/*'a: The lifetime parameter 'a ensures that the lifetime of references in the usernames slice,
+and the references to nodes and edges in the graph, all have the same lifetime. This guarantees
+that the data referenced by the graph is valid for as long as the usernames slice is valid,
+preventing dangling references.
+*/
+fn build_graph<'a>(usernames: &'a [&'a str]) -> DiGraph<&'a str, &'a str> {
     // Create a new directed Graph
-    let mut graph = DiGraph::<&str, &str>::new();
+    let mut graph = DiGraph::<&'a str, &'a str>::new();
     // Create a HashMap to store node indices by user name
     let mut nodes = HashMap::new();
 
