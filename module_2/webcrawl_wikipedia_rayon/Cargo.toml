@@ -1,0 +1,8 @@
+[package]
+name = "webcrawl_wikipedia_rayon"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wikipedia = "0.3.4"
+rayon = "1.7.0"
