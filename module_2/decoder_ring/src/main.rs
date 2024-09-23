@@ -18,11 +18,11 @@ use clap::Parser;
 use decoder_ring::print_stats_analysis;
 use std::fs;
 
-/// CLI tool to reverse engineer a Caesar cipher
+// CLI tool to reverse engineer a Caesar cipher
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// The message to decrypt
+    // The message to decrypt
     #[arg(short, long)]
     message: Option<String>,
 
