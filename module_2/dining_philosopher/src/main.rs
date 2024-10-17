@@ -91,7 +91,7 @@ fn main() {
     // - Each `Fork` contains an `id` and a `Mutex<()>`.
     // - The `Mutex` is used to ensure exclusive access to the fork. The `()` inside `Mutex<()>`
     // is just a unit type, as we don't need to store any data in the mutex itself - we're just
-    // using it for synchronization.
+    // using it for synchronisation.
     // - `Arc` (Atomic Reference Counting) allows multiple ownership of the same data across threads.
     // It's necessary here because multiple philosophers (threads) will need to access the same forks.
 
