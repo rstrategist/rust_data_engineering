@@ -3,6 +3,13 @@ Determines information about AWS S3 buckets and objects.
 */
 // venv Scripts\Activate.ps1
 
+
+// -- constants
+const ENV_CRED_KEY_ID: &str = "S3_KEY_ID";
+const ENV_CRED_KEY_SECRET: &str = "S3_KEY_SECRET";
+const BUCKET_NAME: &str = "rust-aws-sdk-s3-demo";
+const REGION: &str = "us-west-2";
+
 use clap::Parser;
 use humansize::{format_size, DECIMAL};
 
