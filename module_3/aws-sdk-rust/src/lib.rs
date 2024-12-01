@@ -1,13 +1,16 @@
 //Information about the AWS S3 service
-use aws_config::meta::region::RegionProviderChain;
-use aws_sdk_s3::{Client, Error};
+use aws_config::load_from_env;
+use aws_sdk_s3 as s3;
+//use aws_config::meta::region::RegionProviderChain;
+//use aws_sdk_s3::{Client, Error};
 
 // Create a new AWS S3 client
 pub async fn client() -> Result<Client, Error> {
     let region_provider = RegionProviderChain::first_try(None)
         .or_default_provider()
         .or_else("eu-north-1");
-    let shared_config = aws_config::from_env().region(region_provider).load().await;
+    let my_config = load_from_env().await;
+    //let shared_config = aws_config::from_env().region(region_provider).load().await;
     let client = Client::new(&shared_config);
     Ok(client)
 }
