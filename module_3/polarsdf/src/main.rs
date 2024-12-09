@@ -9,7 +9,12 @@ const CSV_FILE: &str = "src/data/global-life-expt-2022.csv";
     version = "1.0",
     author = "Rashid Rasul",
     about = "A command-line tool that reads a CSV file and prints the contents of the file as a DataFrame",
-    after_help = "Example: cargo run -- print --rows 3"
+    after_help = "Example1: cargo run -- print --rows 3
+         Example2: cargo run -- describe
+         Example3: cargo run -- schema
+         Example4: cargo run -- shape
+         Example5: cargo run -- sort --year 2000 --rows 5
+         "
 )]
 struct Cli {
     #[clap(subcommand)]
@@ -39,11 +44,11 @@ enum Commands {
     Sort {
         #[clap(long, default_value = CSV_FILE)]
         path: String,
-        #[clap(long, default_value = "2020")]
+        #[clap(long, default_value = "2019")]
         year: String,
         #[clap(long, default_value = "10")]
         rows: usize,
-        #[clap(long, default_value = "true")]
+        #[clap(long, default_value = "false")]
         order: bool,
     },
 }
@@ -76,15 +81,22 @@ fn main() {
             let df = polarsdf::read_csv(&path);
             let country_column_name = "Country Name";
             //select the country column and the year string passed in and return a new dataframe
-            let vs = df
+            let df2 = df
                 .select([country_column_name, &year])
                 .expect("Failed to select columns");
-            //convert the Vec<Series> to a DataFrame
-            let df2 = DataFrame::new(vs).unwrap();
             //drop any rows with null values and return a new dataframe
-            let df2: DataFrame = df2.drop_nulls(None).unwrap();
+            //let df2: DataFrame = df2.drop_nulls(None).expect("Error dropping nulls");
             //sort the dataframe by the year column and by order passed in
-            let df2 = df2.sort([&year], order).unwrap();
+            let df2 = df2
+                .sort(
+                    [&year],
+                    SortMultipleOptions::default()
+                        .with_order_descending(!order) // Note: we negate order since true means ascending
+                        .with_maintain_order(false),
+                )
+                .unwrap();
+
+            //let df2 = df2.sort([&year], vec![order]).unwrap();
 
             //print the first "rows" of the dataframe
             println!("{:?}", df2.head(Some(rows)));
