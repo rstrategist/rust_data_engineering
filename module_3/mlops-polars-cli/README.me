@@ -1,0 +1,154 @@
+# Polars DataFrame CLI Tool for MLOps Pipelines
+
+## Project Overview
+This project integrates a Rust-based CLI tool for Polars DataFrame operations into an end-to-end MLOps pipeline. The tool allows users to analyse, preprocess, and transform datasets efficiently. It leverages Rust’s performance and Polars’ lazy execution, while also integrating with Python-based machine learning frameworks for training and serving models.
+
+---
+
+## Architecture
+
+### Modular Pipeline
+1. **Data Ingestion**:
+   - Fetch raw data from sources (local/remote).
+   - Parse and load into Polars DataFrames.
+
+2. **Preprocessing**:
+   - Apply transformations and filters via CLI commands.
+   - Save intermediate datasets in an object store (e.g. AWS S3).
+   - Track metadata using tools like DVC/Delta Lake.
+
+3. **Model Training**:
+   - Pass preprocessed datasets to Python-based ML pipelines.
+   - Utilise libraries like PyTorch/TensorFlow.
+
+4. **Prediction Serving**:
+   - Host the trained model via a web service.
+   - Options: Use FastAPI (Python) or Axum (Rust).
+
+---
+
+## Directory Structure
+```
+mlops-polars-cli/
+├── Cargo.toml              # Rust dependencies and project metadata
+├── src/
+│   ├── main.rs             # Entry point for the CLI tool
+│   ├── commands/
+│   │   ├── schema.rs       # Schema display command implementation
+│   │   ├── shape.rs        # DataFrame shape command implementation
+│   │   ├── sort.rs         # Sorting functionality
+│   │   ├── filter.rs       # Filtering functionality
+│   └── utils.rs            # Common utilities (e.g., type parsing)
+├── data/
+│   ├── raw/                # Raw dataset files (e.g., Kaggle datasets)
+│   ├── processed/          # Preprocessed datasets
+│   └── metadata/           # Metadata tracking files (e.g., DVC logs)
+├── scripts/
+│   ├── training_pipeline.py # Python script for training ML models
+│   ├── serving.py           # FastAPI/Axum-based serving script
+├── README.md               # Documentation (this file)
+└── tests/
+    ├── integration.rs      # Integration tests for the CLI tool
+    └── unit.rs             # Unit tests for each command
+```
+
+---
+
+## Features
+
+### CLI Commands
+1. **Schema**
+   - Displays the column names and types in the dataset.
+   - Example:
+     ```bash
+     cargo run -- schema
+     ```
+
+2. **Shape**
+   - Outputs the number of rows and columns in the dataset.
+   - Example:
+     ```bash
+     cargo run -- shape
+     ```
+
+3. **Sort**
+   - Sorts the dataset by a specified column.
+   - Options:
+     - `--column`: Column name to sort by.
+     - `--rows`: Number of rows to display.
+     - `--order`: Sort order (0: ascending, 1: descending).
+   - Example:
+     ```bash
+     cargo run -- sort --column "year" --rows 5 --order 1
+     ```
+
+4. **Filter**
+   - Filters the dataset based on a condition applied to a column.
+   - Options:
+     - `--column`: Column name to filter on.
+     - `--condition`: Filter condition (`eq`, `gt`, `lt`, etc.).
+     - `--value`: Value to filter against.
+   - Example:
+     ```bash
+     cargo run -- filter --column "Yield" --condition "gt" --value 5
+     ```
+
+---
+
+## Key Rust Features
+- **Polars Lazy Execution**: Efficient execution of operations on large datasets.
+- **Thread Safety**: Utilizes Rust’s safety guarantees for concurrency.
+- **Chunked Processing**: Processes data in chunks to reduce memory usage.
+- **Type Safety**: Explicitly handles parsing and type conversions for robust filtering and sorting.
+
+---
+
+## Installation and Usage
+
+### Prerequisites
+- Install Rust and Cargo: [Rust Installation Guide](https://www.rust-lang.org/tools/install).
+- Install Python (for training and serving scripts).
+- Kaggle API (optional, for dataset downloading).
+
+### Steps
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/rstrategist/mlops-polars-cli.git
+   cd mlops-polars-cli
+   ```
+
+2. Build the Rust project:
+   ```bash
+   cargo build
+   ```
+
+3. Run CLI commands:
+   ```bash
+   cargo run -- schema
+   ```
+
+4. Integrate with the Python pipeline:
+   ```bash
+   python scripts/training_pipeline.py
+   ```
+
+---
+
+## Future Enhancements
+- **Advanced Transformations**: Add commands for aggregations, group-by operations, and joins.
+- **AWS Integration**: Automatically upload processed datasets to S3.
+- **Parallel Processing**: Optimize with Rayon for multi-threaded execution.
+- **Prediction Pipeline**: Extend the CLI for batch prediction using trained models.
+
+---
+
+## Contributing
+1. Fork the repository.
+2. Create a new branch for your feature/bugfix.
+3. Submit a pull request with detailed changes.
+
+---
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
