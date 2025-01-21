@@ -8,7 +8,9 @@
 		"vscode": {
 			"extensions": [
 				"rust-lang.rust-analyzer",
-				"amazonwebservices.amazon-q-vscode"
+				"amazonwebservices.amazon-q-vscode",
+				"ziglang.vscode-zig",
+				"amazonwebservices.aws-toolkit-vscode"
 			]
 		}
 	},
