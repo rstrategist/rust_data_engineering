@@ -26,6 +26,7 @@ struct CleanData {
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
+    /************** Pipeline Ingestion Stage **************/
     let raw = vec![
         RawData { id: 1, value: 1 },
         RawData { id: 2, value: -5 },
@@ -33,6 +34,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         RawData { id: 4, value: 50 },
     ];
 
+    /************** Pipeline Processing Stage **************/
     match extract_transform_load(raw) {
         Ok(cleaned) => {
             // Print cleaned data
@@ -48,6 +50,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             println!("Total: {}", total);
             println!("Average: {:.2}", average);
 
+            /************** Pipeline Storage Stage **************/
             // Save cleaned data to csv
             save_to_csv(&cleaned, "cleaned_data.csv")?;
         }
